@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    // Test connection
+    match /test/connection {
+      allow read, write: if true;
+    }
+    
+    // Real-time table orders (Customers place, POS reads and updates)
+    match /orders/{orderId} {
+      // In a real app we might secure this tighter, but for table QR ordering without auth,
+      // we allow open reads/writes for simplicity so customers can place orders without login.
+      allow read, write: if true; 
+    }
+
+    // Shared Menu data for QR ordering
+    match /hotel_data/{docId} {
+      allow read, write: if true;
+    }
+  }
+}

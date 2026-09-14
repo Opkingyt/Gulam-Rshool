@@ -1,0 +1,33 @@
+{
+  "entities": {
+    "TableOrder": {
+      "title": "TableOrder",
+      "description": "Represents an order placed by a customer via Table QR code.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "orderId": { "type": "string", "maxLength": 128 },
+        "tableNo": { "type": "string", "maxLength": 32 },
+        "tableNumber": { "type": "string", "maxLength": 32 },
+        "orderNumber": { "type": "number" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "total": { "type": "number" },
+        "totalItems": { "type": "number" },
+        "status": { "type": "string", "enum": ["NEW", "pending", "accepted", "completed", "cancelled"] },
+        "customerName": { "type": "string", "maxLength": 100 },
+        "customerPhone": { "type": "string", "maxLength": 20 },
+        "specialInstructions": { "type": "string", "maxLength": 300 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["items", "status", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "TableOrder",
+      "description": "Real-time table orders created by customers via QR or staff"
+    }
+  }
+}

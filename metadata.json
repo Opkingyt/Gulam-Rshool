@@ -1,0 +1,6 @@
+{
+  "name": "HOTEL KOHINOOR - Restaurant POS",
+  "description": "Professional Restaurant Billing & POS Android App for Hotel Kohinoor with Bluetooth thermal printing, offline billing, menu management, and sales reports.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
